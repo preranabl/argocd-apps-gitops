@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/preranabl/sockshop-chart.git'
     targetRevision: main         # branch of GitOps repo
-    path: apps                   # look inside /apps for child apps
+    path: "."                   # look inside /apps for child apps
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd            # root apps usually live in argocd ns
