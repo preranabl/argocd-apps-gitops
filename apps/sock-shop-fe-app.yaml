@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/preranabl/sockshop-chart.git'
     targetRevision: main        # branch of Helm repo
-    path: sock-shop-fe          # folder with Chart.yaml
+    path: /          # folder with Chart.yaml
     helm:
       valueFiles:
         - values.yaml
