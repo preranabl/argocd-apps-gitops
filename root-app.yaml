@@ -11,7 +11,7 @@ spec:
     path: "."                   # look inside /apps for child apps
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd            # root apps usually live in argocd ns
+    namespace: sockshop            # root apps usually live in argocd ns
   syncPolicy:
     automated:
       prune: true
