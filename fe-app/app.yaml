@@ -3,8 +3,12 @@ kind: Application
 metadata:
   name: sock-shop-fe
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: sockshop
   source:
     repoURL: 'https://github.com/preranabl/sockshop-chart.git'
     targetRevision: main        
@@ -12,10 +16,10 @@ spec:
     helm:
       valueFiles:
         - values.yaml
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: sockshop
+  project: default
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
