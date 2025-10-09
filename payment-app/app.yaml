@@ -18,17 +18,17 @@ spec:
         replicaCount: 2
 
         image:
-          repository: preranabl/sock-shop-fe
+          repository: preranabl/sockshop-payment
           tag: "0.2.0"
           pullPolicy: IfNotPresent
 
         service:
           type: ClusterIP
           port: 80
-          targetPort: 8079
+          targetPort: 8080
 
         ingress:
-          enabled: true
+          enabled: false
           className: 'ingress-external'
           host: sockshop.local
           path: /
