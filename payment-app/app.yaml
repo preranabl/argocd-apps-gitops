@@ -16,6 +16,7 @@ spec:
     helm:
       values: |
         replicaCount: 2
+        appName: payment-app
 
         image:
           repository: preranabl/sockshop-payment
