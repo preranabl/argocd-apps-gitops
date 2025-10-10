@@ -18,8 +18,8 @@ spec:
         replicaCount: 2
         appName: fe-app
         image:
-          repository: preranabl/sock-shop-fe
-          tag: "0.2.0"
+          repository: weaveworksdemos/front-end
+          tag: "sha-52dee65"
           pullPolicy: IfNotPresent
 
         service:
