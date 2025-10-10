@@ -1,0 +1,47 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sockshop-orders
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: sockshop
+  source:
+    repoURL: 'https://github.com/preranabl/sockshop-chart.git'
+    targetRevision: main        
+    path: '.'          
+    helm:
+      values: |
+        replicaCount: 2
+        appName: orders-app
+
+        image:
+          repository: weaveworksdemos/orders
+          tag: "sha-dc58fe2"
+          pullPolicy: IfNotPresent
+
+        service:
+          type: ClusterIP
+          port: 80
+          targetPort: 8080
+
+        ingress:
+          enabled: false
+          className: 'ingress-external'
+          host: sockshop.local
+          path: /
+
+        securityContext:
+          runAsUser: 10001
+          runAsGroup: 10001
+
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
