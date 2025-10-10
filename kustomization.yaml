@@ -1,4 +1,4 @@
 resources:
   - fe-app/app.yaml
   - payment-app/app.yaml
-  - orders-app/app.yaml
+  # - orders-app/app.yaml
