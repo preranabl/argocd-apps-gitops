@@ -18,7 +18,7 @@ spec:
         replicaCount: 2
         appName: fe-app
         image:
-          repository: preranabl/shok-shop-fe
+          repository: preranabl/sock-shop-fe
           tag: "0.3.0"
           pullPolicy: IfNotPresent
 
