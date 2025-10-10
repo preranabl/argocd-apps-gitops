@@ -18,8 +18,8 @@ spec:
         replicaCount: 2
         appName: fe-app
         image:
-          repository: weaveworksdemos/front-end
-          tag: "sha-52dee65"
+          repository: preranabl/shok-shop-fe
+          tag: "0.3.0"
           pullPolicy: IfNotPresent
 
         service:

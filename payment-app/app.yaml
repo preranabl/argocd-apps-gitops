@@ -19,8 +19,8 @@ spec:
         appName: payment-app
 
         image:
-          repository: weaveworksdemos/payment
-          tag: "sha-8ae4905"
+          repository: preranbl/sockshop-payment
+          tag: "0.2.0"
           pullPolicy: IfNotPresent
 
         service:
