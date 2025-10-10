@@ -19,7 +19,7 @@ spec:
         appName: payment-app
 
         image:
-          repository: preranbl/sockshop-payment
+          repository: preranabl/sockshop-payment
           tag: "0.2.0"
           pullPolicy: IfNotPresent
 
