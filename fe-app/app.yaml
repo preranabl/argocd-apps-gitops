@@ -36,6 +36,14 @@ spec:
         securityContext:
           runAsUser: 10001
           runAsGroup: 10001
+        env:
+          CATALOGUE_DOMAIN: "catalogue.sockshop.svc.cluster.local"
+          CARTS_DOMAIN: "carts.sockshop.svc.cluster.local"
+          ORDERS_DOMAIN: "orders.sockshop.svc.cluster.local"
+          USER_DOMAIN: "user.sockshop.svc.cluster.local"
+          PAYMENT_DOMAIN: "payment-app.sockshop.svc.cluster.local"
+          NODE_ENV: "production"
+          PORT: "8079"
 
   project: default
   syncPolicy:

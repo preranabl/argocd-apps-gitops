@@ -37,6 +37,7 @@ spec:
         securityContext:
           runAsUser: 10001
           runAsGroup: 10001
+        
 
   project: default
   syncPolicy:
