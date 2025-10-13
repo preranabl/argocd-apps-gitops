@@ -19,8 +19,8 @@ spec:
         appName: orders-app
 
         image:
-          repository: weaveworksdemos/orders
-          tag: "sha-dc58fe2"
+          repository: preranabl/sockshop-orders
+          tag: "0.2.0"
           pullPolicy: IfNotPresent
 
         service:
