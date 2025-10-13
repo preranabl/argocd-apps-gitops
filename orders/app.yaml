@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sockshop-orders
+  name: preranabl/sockshop-orders
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
