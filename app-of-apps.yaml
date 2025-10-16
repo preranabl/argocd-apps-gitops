@@ -4,15 +4,17 @@ metadata:
   name: app-of-apps
   namespace: argocd
 spec:
-  project: default  
-  destination:
-    namespace: sockshop
-    server: https://kubernetes.default.svc
+  project: default
   source:
-    repoURL: https://github.com/preranabl/argocd-apps-gitops.git
+    repoURL: 'https://github.com/preranabl/argocd-apps-gitops.git'
     targetRevision: main
     path: app
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
