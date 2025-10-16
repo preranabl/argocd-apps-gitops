@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://github.com/preranabl/sockshop-chart.git
     targetRevision: main
-    path: app
+    path: '.'
     helm:
       values: |
         replicaCount: 2
