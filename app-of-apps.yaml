@@ -5,12 +5,12 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: argocd
+    namespace: sockshop
     server: https://kubernetes.default.svc
   source:
-    repoURL: https://github.com/preranabl/sockshop-chart.git
+    repoURL: https://github.com/preranabl/argocd-apos-gitops.git
     targetRevision: main
-    path: apps
+    path: app
   syncPolicy:
     automated:
       prune: true
