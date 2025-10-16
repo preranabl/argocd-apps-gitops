@@ -6,17 +6,19 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
+  project: default  # 👈 Required field (must be before destination)
   destination:
     server: https://kubernetes.default.svc
     namespace: sockshop
   source:
-    repoURL: 'https://github.com/preranabl/sockshop-chart.git'
-    targetRevision: main        
-    path: 'app'          
+    repoURL: https://github.com/preranabl/sockshop-chart.git
+    targetRevision: main
+    path: charts/frontend   # 👈 Update this to the actual Helm chart path if not 'app'
     helm:
       values: |
         replicaCount: 2
         appName: fe-app
+
         image:
           repository: preranabl/sock-shop-fe
           tag: "0.3.0"
@@ -36,6 +38,7 @@ spec:
         securityContext:
           runAsUser: 10001
           runAsGroup: 10001
+
         env:
           CATALOGUE_DOMAIN: "catalogue.sockshop.svc.cluster.local"
           CARTS_DOMAIN: "carts.sockshop.svc.cluster.local"
@@ -45,10 +48,9 @@ spec:
           NODE_ENV: "production"
           PORT: "8079"
 
-  project: default
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
