@@ -8,7 +8,7 @@ spec:
     namespace: sockshop
     server: https://kubernetes.default.svc
   source:
-    repoURL: https://github.com/preranabl/argocd-apos-gitops.git
+    repoURL: https://github.com/preranabl/argocd-apps-gitops.git
     targetRevision: main
     path: app
   syncPolicy:
