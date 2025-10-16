@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sockshop-fe
+  name: sockshop-orders
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -12,23 +12,24 @@ spec:
   source:
     repoURL: 'https://github.com/preranabl/sockshop-chart.git'
     targetRevision: main        
-    path: '.'          
+    path: 'app'          
     helm:
       values: |
         replicaCount: 2
-        appName: fe-app
+        appName: orders-app
+
         image:
-          repository: preranabl/sock-shop-fe
-          tag: "0.3.0"
+          repository: preranabl/sockshop-orders
+          tag: "0.2.0"
           pullPolicy: IfNotPresent
 
         service:
           type: ClusterIP
-          port: 80
-          targetPort: 8079
+          port: 8080
+          targetPort: 8080
 
         ingress:
-          enabled: true
+          enabled: false
           className: 'ingress-external'
           host: sockshop.local
           path: /
@@ -36,14 +37,11 @@ spec:
         securityContext:
           runAsUser: 10001
           runAsGroup: 10001
+        
         env:
-          CATALOGUE_DOMAIN: "catalogue.sockshop.svc.cluster.local"
-          CARTS_DOMAIN: "carts.sockshop.svc.cluster.local"
-          ORDERS_DOMAIN: "orders.sockshop.svc.cluster.local"
-          USER_DOMAIN: "user.sockshop.svc.cluster.local"
-          PAYMENT_DOMAIN: "payment-app.sockshop.svc.cluster.local"
+          MONGO_ENDPOINT: "mongodb://orders-db:27017/data"
           NODE_ENV: "production"
-          PORT: "8079"
+          PORT: "8080"
 
   project: default
   syncPolicy:
