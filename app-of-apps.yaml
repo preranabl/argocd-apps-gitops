@@ -4,6 +4,7 @@ metadata:
   name: app-of-apps
   namespace: argocd
 spec:
+  project: default  
   destination:
     namespace: sockshop
     server: https://kubernetes.default.svc
